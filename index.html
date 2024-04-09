@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="darkreader" content="catppuccin ftw">
+    <title>Better Profiles (Web editor)</title>
+    <style>
+        @font-face {
+            font-family: Fredoka One;
+            src: url(/assets/font/fredokaone/FredokaOne-Regular.ttf);
+        }
+    </style>
+    <link href="/assets/style/global.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Better Profiles (Web editor)</h1>
+    <div class="container">
+      <script src="/assets/script/idk.js"></script>
+      <form id="profileForm" action="/" method="post" enctype="multipart/form-data" data-bitwarden-watching="1">
+      <div class="row">
+        <div class="col-25">
+          <label for="pronoun">Pronouns</label>
+        </div>
+        <div class="col-75">
+          <select id="pronoun.1" name="pronoun.1">
+            <option value="he">he/him</option>
+            <option value="she">she/her</option>
+            <option value="they">they/them</option>
+            <option value="they">it/its</option>
+          </select>
+        </div>
+        <div class="col-75">
+            <select id="pronoun.2" name="pronoun.2">
+              <option value="he">he/him</option>
+              <option value="she">she/her</option>
+              <option value="they">they/them</option>
+              <option value="they">it/its</option>
+            </select>
+          </div>
+          <div class="col-75">
+            <select id="pronoun.3" name="pronoun.3">
+              <option value="he">he/him</option>
+              <option value="she">she/her</option>
+              <option value="they">they/them</option>
+              <option value="they">it/its</option>
+            </select>
+          </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-25">
+          <label for="discord">Discord</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="discord" name="discord" placeholder="@username">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+            <label for="twitter">Twitter</label>
+          </div>
+        <div class="col-75">
+            <input type="text" id="twitter" name="twitter" placeholder="@username">
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+            <label for="github">Github</label>
+          </div>
+        <div class="col-75">
+            <input type="text" id="github" name="github" placeholder="@username">
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+            <label for="fediverse">Fediverse</label>
+          </div>
+        <div class="col-75">
+            <input type="text" id="fediverse" name="fediverse" placeholder="username@example.org">
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+            <label for="matrix">Matrix</label>
+          </div>
+        <div class="col-75">
+            <input type="text" id="matrix" name="matrix" placeholder="@username:example.org">
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+            <label for="tumblr">Tumblr</label>
+          </div>
+        <div class="col-75">
+            <input type="text" id="tumblr" name="tumblr" placeholder="idk, never used tumblr">
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+            <label for="facebook">Facebook</label>
+          </div>
+        <div class="col-75">
+            <input type="text" id="facebook" name="facebook" placeholder="dont know">
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+            <label for="myspace">MySpace</label>
+          </div>
+        <div class="col-75">
+            <input type="text" id="myspace" name="myspace" placeholder="dont know">
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+            <label for="bluesky">BlueSky</label>
+          </div>
+        <div class="col-75">
+            <input type="text" id="bluesky" name="bluesky" placeholder="@username.example.org">
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+            <label for="website">Website</label>
+          </div>
+        <div class="col-75">
+            <input type="text" id="website" name="website" placeholder="example.org">
+          </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-25">
+          <label for="bio">Bio</label>
+        </div>
+        <div class="col-50">
+          <textarea id="bio" name="bio" placeholder="Bio" style="height:100px"></textarea>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <input type="submit" value="Submit">
+      </div>
+      </form>
+    </div>
+    </body>
+    <footer>
+      <p>Web design by <a href="https://github.com/PassiHD2004">Blexyel</a></p>
+    </footer>
+</html>    

@@ -14,6 +14,9 @@
 </head>
 <body>
     <h1>Better Profiles (Web editor)</h1>
+    <div id="loading-container">
+      <p id="loading-text">loading</p>
+    </div>
     <div class="container">
       <script src="/assets/script/idk.js"></script>
       <form id="profileForm" action="/" method="post" enctype="multipart/form-data" data-bitwarden-watching="1">
@@ -22,118 +25,47 @@
           <label for="pronoun">Pronouns</label>
         </div>
         <div class="col-75">
-          <select id="pronoun.1" name="pronoun.1">
+          <select id="pronoun-set-1" name="pronoun-set-1" autocomplete="off">
+            <option value="">none</option>
             <option value="he">he/him</option>
             <option value="she">she/her</option>
             <option value="they">they/them</option>
-            <option value="they">it/its</option>
+            <option value="it">it/its</option>
+            <option disabled value="">custom pronouns only on request</option>
           </select>
         </div>
         <div class="col-75">
-            <select id="pronoun.2" name="pronoun.2">
+            <select id="pronoun-set-2" name="pronoun-set-2" autocomplete="off">
+              <option value="">none</option>
               <option value="he">he/him</option>
               <option value="she">she/her</option>
               <option value="they">they/them</option>
-              <option value="they">it/its</option>
+              <option value="it">it/its</option>
+              <option disabled value="">custom pronouns only on request</option>
             </select>
           </div>
           <div class="col-75">
-            <select id="pronoun.3" name="pronoun.3">
+            <select id="pronoun-set-3" name="pronoun-set-3" autocomplete="off">
+              <option value="">none</option>
               <option value="he">he/him</option>
               <option value="she">she/her</option>
               <option value="they">they/them</option>
-              <option value="they">it/its</option>
+              <option value="it">it/its</option>
+              <option disabled value="">custom pronouns only on request</option>
             </select>
           </div>
+          <h2 id="pronouns-preview">she/they</h2>
+      </div>
+      <hr>
+      <div id="form_socials">
       </div>
       <hr>
       <div class="row">
         <div class="col-25">
-          <label for="discord">Discord</label>
-        </div>
-        <div class="col-75">
-          <input type="text" id="discord" name="discord" placeholder="@username">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-25">
-            <label for="twitter">Twitter</label>
-          </div>
-        <div class="col-75">
-            <input type="text" id="twitter" name="twitter" placeholder="@username">
-          </div>
-      </div>
-      <div class="row">
-        <div class="col-25">
-            <label for="github">Github</label>
-          </div>
-        <div class="col-75">
-            <input type="text" id="github" name="github" placeholder="@username">
-          </div>
-      </div>
-      <div class="row">
-        <div class="col-25">
-            <label for="fediverse">Fediverse</label>
-          </div>
-        <div class="col-75">
-            <input type="text" id="fediverse" name="fediverse" placeholder="username@example.org">
-          </div>
-      </div>
-      <div class="row">
-        <div class="col-25">
-            <label for="matrix">Matrix</label>
-          </div>
-        <div class="col-75">
-            <input type="text" id="matrix" name="matrix" placeholder="@username:example.org">
-          </div>
-      </div>
-      <div class="row">
-        <div class="col-25">
-            <label for="tumblr">Tumblr</label>
-          </div>
-        <div class="col-75">
-            <input type="text" id="tumblr" name="tumblr" placeholder="idk, never used tumblr">
-          </div>
-      </div>
-      <div class="row">
-        <div class="col-25">
-            <label for="facebook">Facebook</label>
-          </div>
-        <div class="col-75">
-            <input type="text" id="facebook" name="facebook" placeholder="dont know">
-          </div>
-      </div>
-      <div class="row">
-        <div class="col-25">
-            <label for="myspace">MySpace</label>
-          </div>
-        <div class="col-75">
-            <input type="text" id="myspace" name="myspace" placeholder="dont know">
-          </div>
-      </div>
-      <div class="row">
-        <div class="col-25">
-            <label for="bluesky">BlueSky</label>
-          </div>
-        <div class="col-75">
-            <input type="text" id="bluesky" name="bluesky" placeholder="@username.example.org">
-          </div>
-      </div>
-      <div class="row">
-        <div class="col-25">
-            <label for="website">Website</label>
-          </div>
-        <div class="col-75">
-            <input type="text" id="website" name="website" placeholder="example.org">
-          </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-25">
-          <label for="bio">Bio</label>
+          <label for="form_bio">Bio</label>
         </div>
         <div class="col-50">
-          <textarea id="bio" name="bio" placeholder="Bio" style="height:100px"></textarea>
+          <textarea id="form_bio" name="form_bio" placeholder="Bio" style="height:100px"></textarea>
         </div>
       </div>
       <br>

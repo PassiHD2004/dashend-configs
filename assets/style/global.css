@@ -30,6 +30,7 @@ hr {
 
 b {
   color: var(--col-secondary);
+  margin-left: 1.5%;
 }
 
 a {

@@ -235,7 +235,6 @@ function update_ui() {
   // yeah...
   for (let key in profile_data) {
     if (key == "id" || key == "pronouns") continue;
-    console.log("key: " + key);
     document.getElementById("form_" + key).value = profile_data[key];
   }
 }

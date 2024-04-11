@@ -28,6 +28,14 @@ hr {
   margin-top: 5px;
 }
 
+b {
+  color: var(--col-secondary);
+}
+
+a {
+  color: var(--ctp-mocha-teal);
+}
+
 input[type=text],
 select,
 textarea {

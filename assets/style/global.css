@@ -193,3 +193,7 @@ button:hover {
   font-size: 20px;
   text-align: center;
 }
+
+#rooot {
+  color: var(--ctp-mocha-pink);
+}

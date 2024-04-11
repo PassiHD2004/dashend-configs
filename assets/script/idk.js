@@ -153,9 +153,6 @@ function update_ui() {
   // piss off loading prompt
   document.getElementById("loading-container").style.display = "none";
 
-  // set form values
-  //document.getElementById("form_bio").value = profile_data.bio;
-
   // yeah...
   for (let key in profile_data) {
     if (key == "id" || key == "pronouns") continue;

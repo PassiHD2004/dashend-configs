@@ -1,5 +1,10 @@
 @import url(catppuccin.css);
 
+@font-face {
+  font-family: "Ubuntu Bold";
+  src: url(/assets/font/Ubuntu-Bold.ttf);
+}
+
 :root {
   --col-primary: var(--ctp-mocha-pink);
   --col-secondary: var(--ctp-mocha-red);
@@ -221,6 +226,43 @@ h5,
 h6,
 p {
   color: white;
+}
+
+#bio-preview>h1, h2, h3, h4, h5, h6 {
+  font-family: Ubuntu Bold;
+}
+
+#bio-preview>h1 {
+  font-size: 250%;
+}
+
+#bio-preview>h2 {
+  font-size: 200%;
+}
+
+#bio-preview>h3 {
+  font-size: 150%;
+}
+
+#bio-preview>h4 {
+  font-size: 120%;
+}
+
+#bio-preview>h5 {
+  font-size: 100%;
+}
+
+#bio-preview>h6 {
+  font-size: 80%;
+}
+
+#bio-preview>hr {
+  color: lightslategrey;
+  opacity: 0.5;
+  width: calc(100% - 23px);
+  position: relative;
+  top: -3px;
+  margin-bottom: 7px;
 }
 
 /* --- robtop colors --- */

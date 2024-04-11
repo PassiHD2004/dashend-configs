@@ -243,7 +243,7 @@ function init_ui() {
     console.log("step 1: " + step_1);
     let step_2 = fix_up_normal_tags(step_1);
     console.log("step 2: " + step_2);
-    let step_3 = marked.parse(step_2.replaceAll("\n", "\n\n"));
+    let step_3 = marked.parse(step_2.replaceAll("\n", "\n\n")).replaceAll("</h1>", "</h1><hr>");
     console.log("step 3: " + step_3);
     let step_4 = add_colors_for_tags(step_3);
 

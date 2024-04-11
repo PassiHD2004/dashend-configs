@@ -235,3 +235,22 @@ function update_ui() {
     document.getElementById("form_" + key).value = profile_data[key];
   }
 }
+
+function save_stuff() {
+  let body = JSON.stringify(profile_data);
+  console.log(body);
+  fetch("https://gd-backend.foxgirl.wtf/api/v1/profiles/13949595", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + token
+    },
+    body: body,
+  }).then(response => {
+    if (response.ok) {
+      alert("saved !! :3");
+    } else {
+      alert("failed to save data: " + response.status);
+    }
+  });
+}

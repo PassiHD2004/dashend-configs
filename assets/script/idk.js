@@ -215,10 +215,9 @@ function update_ui() {
   // piss off loading prompt
   document.getElementById("loading-container").style.display = "none";
 
-  let set = 0;
   let parsed_pronouns = parse_pronouns(profile_data.pronouns || "");
   for (i = 0; i < 3; i++) {
-    document.getElementById("pronoun-set-" + (i+1)).value = parsed_pronouns[i] || "";
+    document.getElementById("pronoun-set-" + (i + 1)).value = parsed_pronouns[i] || "";
   }
 
   if (profile_data.pronouns == "he/she/it") {

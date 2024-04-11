@@ -20,7 +20,6 @@ let profile_data = {
 let profile_original;
 
 const url_params = new URLSearchParams(document.location.hash);
-console.log(url_params);
 
 let token = url_params.get("#token") || url_params.get("token");
 let user_id = url_params.get("#id") || url_params.get("id");
@@ -46,8 +45,6 @@ fetch("https://gd-backend.foxgirl.wtf/api/v1/profiles/" + user_id)
   });
 
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("loaded!");
-
   if (sex) {
     init_ui();
   } else {
@@ -69,7 +66,6 @@ function parse_pronouns(pronouns) {
     parsed.push(pronoun);
   });
 
-  console.log(parsed);
   return parsed;
 }
 
@@ -203,7 +199,6 @@ function init_ui() {
     document.getElementById("pronoun-set-" + (i + 1)).onchange = function () {
       let set = parseInt(this.id.split("-")[2]); // wow ok i hate this shit
       let pronoun = this.value;
-      console.log("set - " + set + " value " + pronoun);
 
       let new_pronouns = get_modified_pronouns(parse_pronouns(profile_data.pronouns), set, pronoun);
       profile_data.pronouns = new_pronouns;

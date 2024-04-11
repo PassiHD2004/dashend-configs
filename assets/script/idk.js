@@ -236,6 +236,11 @@ function init_ui() {
     form.appendChild(div);
   }
 
+  document.getElementById("form_bio").onchange = function () {
+    let meow = document.getElementById("form_bio");
+    profile_data.bio = meow.value == "" ? null : meow.value;
+  }
+
   for (i = 0; i < 3; i++) {
     document.getElementById("pronoun-set-" + (i + 1)).onchange = function () {
       let set = parseInt(this.id.split("-")[2]); // wow ok i hate this shit

@@ -236,10 +236,21 @@ function init_ui() {
     form.appendChild(div);
   }
 
-  document.getElementById("form_bio").onchange = function () {
+  document.getElementById("form_bio").oninput = function () {
     let meow = document.getElementById("form_bio");
     profile_data.bio = meow.value == "" ? null : meow.value;
+    let step_1 = fix_up_hex_tags(profile_data.bio || "");
+    console.log("step 1: " + step_1);
+    let step_2 = fix_up_normal_tags(step_1);
+    console.log("step 2: " + step_2);
+    let step_3 = marked.parse(step_2.replaceAll("\n", "\n\n"));
+    console.log("step 3: " + step_3);
+    let step_4 = add_colors_for_tags(step_3);
+
+    document.getElementById("bio-preview").innerHTML = step_4;
   }
+
+  document.getElementById("form_bio").oninput();
 
   for (i = 0; i < 3; i++) {
     document.getElementById("pronoun-set-" + (i + 1)).onchange = function () {
@@ -317,4 +328,45 @@ function save_stuff() {
       alert("failed to save data: " + response.status);
     }
   });
+}
+
+function fix_up_hex_tags(meow) {
+  // hex color tags are in the format <c hex> and always end with a </c>
+  // sadly, the space causes marked to not recognize it as a tag
+  // so we have to fix it up
+
+  let color_tag = /<c ([0-9a-fA-F]{6})>(.*.)<\/c>/g;
+
+  // deal with inner tags too
+  while (color_tag.test(meow)) {
+    meow = meow.replace(color_tag, "<c-$1>$2</c-$1>");
+  }
+
+  return meow;
+}
+
+function fix_up_normal_tags(meow) {
+  let unfixed_color_tag = /<c([abgljyorp])>(.*.)<\/c>/g;
+
+  while (unfixed_color_tag.test(meow)) {
+    meow = meow.replace(unfixed_color_tag, "<c$1>$2</c$1>");
+  }
+
+  return meow;
+}
+
+function add_colors_for_tags(meow) {
+  document.getElementById("cursed-color-stuff").innerHTML = "";
+
+  let original = meow;
+  let tag = /<c-([0-9a-fA-F]{6})>/g;
+
+  let matches = meow.matchAll(tag);
+
+  for (let match of matches) {
+    let color = match[1];
+    document.getElementById("cursed-color-stuff").innerHTML += "c-" + color + "{ color: #" + color + ";}";
+  }
+
+  return original;
 }

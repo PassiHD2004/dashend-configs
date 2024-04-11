@@ -17,10 +17,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-h1 {
+#title {
   color: var(--col-primary);
-  font-size: 280%;
   text-align: center;
+  font-size: 280%;
 }
 
 hr {
@@ -196,4 +196,66 @@ button:hover {
 
 #rooot {
   color: var(--ctp-mocha-pink);
+}
+
+#bio-preview-wrapper {
+  float: right;
+  width: 55%;
+  background-color: #001223;
+  min-height: 200px;
+  margin-top: 6px;
+  display: inline;
+}
+
+#bio-preview {
+  position: relative;
+  top: 10px;
+  right: -10px;
+}
+
+#bio-preview>h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: white;
+}
+
+/* --- robtop colors --- */
+ca {
+  color: #9632ff;
+}
+
+cb {
+  color: #4a52e1;
+}
+
+cg {
+  color: #40e348;
+}
+
+cl {
+  color: #60abef;
+}
+
+cj {
+  color: #32c8ff;
+}
+
+cy {
+  color: #ffff00;
+}
+
+co {
+  color: #ffa54b;
+}
+
+cr {
+  color: #ff5a5a;
+}
+
+cp {
+  color: #ff00ff;
 }

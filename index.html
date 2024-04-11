@@ -7,6 +7,8 @@
   <title>Better Profiles (Web editor)</title>
   <link href="/assets/style/global.css" rel="stylesheet">
   <script src="/assets/script/idk.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style id="cursed-color-stuff"></style>
 </head>
 
 <body>
@@ -63,6 +65,9 @@
         </div>
         <div class="col-50">
           <textarea id="form_bio" name="form_bio" placeholder="Bio" style="height:100px"></textarea>
+        </div>
+        <div id="bio-preview-wrapper">
+          <div id="bio-preview"></div>
         </div>
       </div>
       <br>

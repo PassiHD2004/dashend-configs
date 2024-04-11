@@ -19,8 +19,6 @@ let profile_data = {
 };
 let profile_original;
 
-let parsed_pronouns = [];
-
 const url_params = new URLSearchParams(document.location.hash);
 console.log(url_params);
 
@@ -73,6 +71,66 @@ function parse_pronouns(pronouns) {
 
   console.log(parsed);
   return parsed;
+}
+
+function get_modified_pronouns(pronouns, set, pronoun) {
+  // pronouns is an array!! important!! (no i wont use typescript)
+  if (pronouns.length < set) {
+    pronouns.length = set;
+  }
+
+  if (pronouns[set - 1] == pronoun) {
+    if (set == 1 && pronouns.length == 1) {
+      return "";
+    }
+    pronouns.splice(set - 1, 1);
+  } else {
+    if (!(set > 1 && (pronouns[set - 2] == pronoun || set > 2 && pronouns[set - 3] == pronoun))) {
+      pronouns[set - 1] = pronoun;
+    } else {
+      pronouns.splice(set - 1, 1);
+    }
+  }
+
+  let pronoun_set_count = pronouns.length;
+  let new_pronouns = "";
+
+  for (let i = 0; i < pronoun_set_count; i++) {
+    let p = pronouns[i];
+    if (!(p == "" || p == null)) {
+      new_pronouns += p + "/";
+    } else {
+      pronoun_set_count--;
+    }
+  }
+  new_pronouns = new_pronouns.slice(0, -1);
+
+  if (pronoun_set_count == 1) {
+    second_pronoun = null;
+    switch (new_pronouns) {
+      case "they": {
+        second_pronoun = "them";
+        break;
+      }
+      case "it": {
+        second_pronoun = "its";
+        break;
+      }
+      case "she": {
+        second_pronoun = "her";
+        break;
+      }
+      case "he": {
+        second_pronoun = "him";
+        break;
+      }
+    }
+    if (second_pronoun != null) {
+      new_pronouns += "/" + second_pronoun;
+    }
+  }
+
+  return new_pronouns;
 }
 
 function get_ui_name_for_key(key) {
@@ -136,14 +194,17 @@ function init_ui() {
     form.appendChild(div);
   }
 
-  parsed_pronouns = parse_pronouns(profile_data.pronouns || "");
-  // set pronouns initially
-  let set = 0;
-  parsed_pronouns.forEach(pronoun => {
-    set++;
-    document.getElementById("pronoun-set-" + set).value = pronoun;
-  });
-  // todo add change listener to pronouns
+  for (i = 0; i < 3; i++) {
+    document.getElementById("pronoun-set-" + (i + 1)).onchange = function () {
+      let set = parseInt(this.id.split("-")[2]); // wow ok i hate this shit
+      let pronoun = this.value;
+      console.log("set - " + set + " value " + pronoun);
+
+      let new_pronouns = get_modified_pronouns(parse_pronouns(profile_data.pronouns), set, pronoun);
+      profile_data.pronouns = new_pronouns;
+      update_ui();
+    }
+  }
 
   update_ui();
 }
@@ -153,10 +214,23 @@ function update_ui() {
   // piss off loading prompt
   document.getElementById("loading-container").style.display = "none";
 
+  let set = 0;
+  let parsed_pronouns = parse_pronouns(profile_data.pronouns || "");
+  for (i = 0; i < 3; i++) {
+    document.getElementById("pronoun-set-" + (i+1)).value = parsed_pronouns[i] || "";
+  }
+
+  if (profile_data.pronouns == "he/she/it") {
+    // german easter :egg:
+    document.getElementById("pronouns-preview").innerHTML = "he, she, it - das S muss mit! (" + profile_data.pronouns + ")";
+  } else {
+    document.getElementById("pronouns-preview").innerHTML = profile_data.pronouns;
+  }
+
   // yeah...
   for (let key in profile_data) {
     if (key == "id" || key == "pronouns") continue;
-    console.log("key: "+ key);
-    document.getElementById("form_"+key).value = profile_data[key];
+    console.log("key: " + key);
+    document.getElementById("form_" + key).value = profile_data[key];
   }
 }

@@ -19,6 +19,8 @@ let profile_data = {
 };
 let profile_original;
 
+let discord_check_interval;
+
 const url_params = new URLSearchParams(document.location.hash);
 
 let token = url_params.get("#token") || url_params.get("token");
@@ -182,16 +184,52 @@ function init_ui() {
     let sub_div_input = document.createElement("div");
     sub_div_input.classList.add("col-idk");
 
-    let input = document.createElement("input");
-    input.type = "text";
-    input.id = "form_" + key;
-    input.name = ui_name[0];
-    input.placeholder = ui_name[1];
-    input.autocomplete = "off";
-    input.oninput = function () {
-      profile_data[key] = input.value == "" ? null : input.value;
+    if (key != "social_discord") {
+      let input = document.createElement("input");
+      input.type = "text";
+      input.id = "form_" + key;
+      input.name = ui_name[0];
+      input.placeholder = ui_name[1];
+      input.autocomplete = "off";
+      input.oninput = function () {
+        profile_data[key] = input.value == "" ? null : input.value;
+      }
+      sub_div_input.appendChild(input);
+    } else {
+      let status_wrapper = document.createElement("div");
+      status_wrapper.classList.add("col-eat-ass");
+
+      let status = document.createElement("input");
+      status.type = "text";
+      status.autocomplete = "off";
+      status.disabled = "true";
+      status.innerHTML = "?";
+      status.id = "form_" + key;
+      status_wrapper.appendChild(status);
+
+      sub_div_input.appendChild(status_wrapper);
+
+      let button_wrapper = document.createElement("div");
+      button_wrapper.classList.add("col-eat-shit");
+
+      let button = document.createElement("button");
+      button.innerHTML = "Link";
+      button.onclick = function () {
+        localStorage.removeItem("discord_user"); // remove old account information
+        profile_data["social_discord"] = "";
+        update_ui();
+
+        // i should maybe not hardcode this but who cares lmao
+        let url = "https://discord.com/oauth2/authorize?client_id=1228059447490908292&response_type=token&redirect_uri=http%3A%2F%2F0.0.0.0%3A5500%2Fdcauth.html&scope=identify";
+        window.open(url, "_blank");
+
+        discord_check_interval = setInterval(() => {
+          query_discord_stuff();
+        }, 100);
+      };
+      button_wrapper.appendChild(button)
+      sub_div_input.appendChild(button_wrapper);
     }
-    sub_div_input.appendChild(input);
 
     div.appendChild(sub_div_label);
     div.appendChild(sub_div_input);
@@ -210,6 +248,25 @@ function init_ui() {
   }
 
   update_ui();
+}
+
+function query_discord_stuff() {
+  console.log("query_discord_stuff");
+  // check if discord_user is set in localStorage
+  let discord_user = localStorage.getItem("discord_user");
+
+  if (discord_user != null) {
+    console.log("got discord user !!");
+    // unset interval
+    clearInterval(discord_check_interval);
+
+    let discord_user_json = JSON.parse(discord_user);
+    let discord_id = discord_user_json["id"];
+    let discord_username = discord_user_json["username"];
+    profile_data.social_discord = discord_username + ":" + discord_id;
+
+    update_ui();
+  }
 }
 
 function update_ui() {
@@ -231,9 +288,11 @@ function update_ui() {
 
   // yeah...
   for (let key in profile_data) {
-    if (key == "id" || key == "pronouns") continue;
+    if (key == "id" || key == "pronouns" || key == "social_discord") continue;
     document.getElementById("form_" + key).value = profile_data[key];
   }
+
+  document.getElementById("form_social_discord").value = profile_data.social_discord || "not linked";
 }
 
 function save_stuff() {

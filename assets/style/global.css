@@ -94,8 +94,8 @@ button:hover {
 
 .col-idk {
   float: left;
-  width: 20%;
-  margin-left: 6%;
+  width: 264px;
+  margin-left: 5%;
   margin-top: 6px;
 }
 
@@ -110,6 +110,24 @@ button:hover {
   width: 25%;
   display: inline;
   margin-top: 6px;
+}
+
+.col-eat-ass {
+  float: left;
+  width: calc(100% - 70px);
+  margin-top: 6px;
+  margin-right: 1px;
+}
+
+.col-eat-shit {
+  float: right;
+  /* fix position */
+  margin-left: 220px;
+  position: absolute;
+  width: 70px;
+  margin-top: 6px;
+  border: 1px transparent;
+  border-radius: 10px;
 }
 
 #pronouns-preview {
@@ -161,4 +179,17 @@ button:hover {
 #title {
   margin-top: 30px;
   margin-bottom: 10px;
+}
+
+.mid-asf {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.infomeowmeow {
+  color: var(--col-primary);
+  font-size: 20px;
+  text-align: center;
 }

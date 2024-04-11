@@ -79,6 +79,11 @@ function get_modified_pronouns(pronouns, set, pronoun) {
     pronouns.length = set;
   }
 
+  // the code flow wants pronoun to be set, even if we're removing it
+  if (pronoun == "" || pronoun == null) {
+    pronoun = pronouns[set - 1];
+  }
+
   if (pronouns[set - 1] == pronoun) {
     if (set == 1 && pronouns.length == 1) {
       return "";

@@ -27,8 +27,8 @@ let user_id = url_params.get("#id") || url_params.get("id");
 console.log("token: " + token);
 console.log("user_id: " + user_id);
 
-// uncomment for development
-// history.pushState("", document.title, window.location.pathname + window.location.search);
+// comment this out for development
+history.pushState("", document.title, window.location.pathname + window.location.search);
 
 fetch("https://gd-backend.foxgirl.wtf/api/v1/profiles/" + user_id)
   .then(response => response.json())

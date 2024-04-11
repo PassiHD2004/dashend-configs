@@ -180,7 +180,7 @@ function init_ui() {
     sub_div_label.appendChild(label);
 
     let sub_div_input = document.createElement("div");
-    sub_div_input.classList.add("col-75");
+    sub_div_input.classList.add("col-idk");
 
     let input = document.createElement("input");
     input.type = "text";

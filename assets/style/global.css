@@ -24,6 +24,7 @@ h1 {
 
 hr {
   color: var(--ctp-mocha-pink);
+  margin-top: 5px;
 }
 
 input[type=text],
@@ -76,6 +77,7 @@ input[type=submit]:hover {
   float: left;
   width: 15%;
   margin-top: 6px;
+  margin-right: 1px;
 }
 
 .col-idk {

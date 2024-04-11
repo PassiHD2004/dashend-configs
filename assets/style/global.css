@@ -45,7 +45,7 @@ label {
   color: var(--col-secondary);
 }
 
-input[type=submit] {
+button {
   background-color: var(--ctp-mocha-mantle);
   color: var(--col-secondary);
   padding: 12px 20px;
@@ -54,10 +54,12 @@ input[type=submit] {
   cursor: pointer;
   margin-left: 5%;
   float: left;
+  transition: color 0.3s, background-color 0.3s;
 }
 
-input[type=submit]:hover {
-  background-color: #45a049;
+button:hover {
+  color: #11111b;
+  background-color: #a6e3a1;
 }
 
 .container {

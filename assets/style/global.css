@@ -148,3 +148,8 @@ button:hover {
   color: var(--col-secondary);
   font-size: 69px;
 }
+
+#title {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}

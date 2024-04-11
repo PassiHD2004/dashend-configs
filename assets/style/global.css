@@ -212,6 +212,11 @@ button:hover {
   display: inline;
 }
 
+#bio-preview-disclaimer {
+  float: right;
+  margin-right: 10px;
+}
+
 #bio-preview {
   position: relative;
   top: 10px;
@@ -228,7 +233,12 @@ p {
   color: white;
 }
 
-#bio-preview>h1, h2, h3, h4, h5, h6 {
+#bio-preview>h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: Ubuntu Bold;
 }
 

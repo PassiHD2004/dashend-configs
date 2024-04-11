@@ -23,12 +23,14 @@ const url_params = new URLSearchParams(document.location.hash);
 
 let token = url_params.get("#token") || url_params.get("token");
 let user_id = url_params.get("#id") || url_params.get("id");
+let development = url_params.get("#development") || url_params.get("development");
 
 console.log("token: " + token);
 console.log("user_id: " + user_id);
 
-// comment this out for development
-history.pushState("", document.title, window.location.pathname + window.location.search);
+if (development != "true") {
+  history.pushState("", document.title, window.location.pathname + window.location.search);
+}
 
 fetch("https://gd-backend.foxgirl.wtf/api/v1/profiles/" + user_id)
   .then(response => response.json())
